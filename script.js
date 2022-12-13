@@ -197,9 +197,10 @@ function multOfArray(array){
 }
 
 function divOfArray(array){
-    if(typeof(array[0]/array[1])==NaN){
-        inputOnScreen='ERROR!';
-        screen.innerHTML=inputOnScreen;
+
+    if(array[1]===0){
+        return 'ERROR!';
+
     }else{
     return array[0]/array[1];
     }
@@ -285,10 +286,17 @@ function getResult(){
         div.push(operand);
         console.log(div);
         operandInput.length=0;
-        let resultRaw=divOfArray(div);  
-        result=Math.round(resultRaw*100)/100;
-        inputOnScreen=result;
-        screen.innerHTML=inputOnScreen;
+        let resultRaw=divOfArray(div);
+        console.log(resultRaw);
+        if (resultRaw==='ERROR!'){
+            inputOnScreen=resultRaw;
+            screen.innerHTML=inputOnScreen; 
+        }else{
+            result=Math.round(resultRaw*100)/100;
+            inputOnScreen=result;
+            screen.innerHTML=inputOnScreen;            
+        }
+                
         div.length=0;
 
 
