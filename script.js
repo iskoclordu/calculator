@@ -1,16 +1,5 @@
 let operandInput=[];
 
-function backspacing(){
-    return operandInput.pop();
-    console.log(operandInput);
-}
-
-const backspace=document.querySelector('#backspace');
-backspace.addEventListener('click',()=>{
-    operandInput.pop()
-    inputOnScreen=operandInput.join('')
-    screen.innerHTML=inputOnScreen;
-});
 
 //displaying on screen
 let inputOnScreen='0';
@@ -18,10 +7,10 @@ const screen=document.querySelector('.screen p');
 screen.innerHTML=inputOnScreen;
 
 
-//number and decimal inputs by clicking
+//Parsing Numbers Input Functions
 
-const input1=document.querySelector('#one');
-input1.addEventListener('click',()=>{
+
+function getInput1(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation=''; //unless lastOperation changes,it will continue to empty the input.   
@@ -32,10 +21,9 @@ input1.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
         
-});
+}
 
-const input2=document.querySelector('#two');
-input2.addEventListener('click',()=>{
+function getInput2(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -46,10 +34,9 @@ input2.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input3=document.querySelector('#three');
-input3.addEventListener('click',()=>{
+function getInput3(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -60,10 +47,9 @@ input3.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input4=document.querySelector('#four');
-input4.addEventListener('click',()=>{
+function getInput4(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -74,10 +60,9 @@ input4.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input5=document.querySelector('#five');
-input5.addEventListener('click',()=>{
+function getInput5(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -88,10 +73,9 @@ input5.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input6=document.querySelector('#six');
-input6.addEventListener('click',()=>{
+function getInput6(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -102,10 +86,9 @@ input6.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input7=document.querySelector('#seven');
-input7.addEventListener('click',()=>{
+function getInput7(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -116,10 +99,9 @@ input7.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input8=document.querySelector('#eight');
-input8.addEventListener('click',()=>{
+function getInput8(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -130,10 +112,9 @@ input8.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input9=document.querySelector('#nine');
-input9.addEventListener('click',()=>{
+function getInput9(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -144,10 +125,9 @@ input9.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const input0=document.querySelector('#zero');
-input0.addEventListener('click',()=>{
+function getInput0(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -158,10 +138,9 @@ input0.addEventListener('click',()=>{
         screen.innerHTML=inputOnScreen;
     }
          
-});
+}
 
-const inputDot=document.querySelector('#deci');
-inputDot.addEventListener('click',()=>{
+function getInputDeci(){
     if (lastOperation==='='){
         operandInput.length=0;
         lastOperation='';
@@ -177,7 +156,43 @@ inputDot.addEventListener('click',()=>{
         inputOnScreen=operandInput.join('');
         screen.innerHTML=inputOnScreen;
     }        
-});
+}
+
+
+//number and decimal inputs by clicking
+
+const input1=document.querySelector('#one');
+input1.addEventListener('click',getInput1);
+
+const input2=document.querySelector('#two');
+input2.addEventListener('click',getInput2);
+
+const input3=document.querySelector('#three');
+input3.addEventListener('click',getInput3);
+
+const input4=document.querySelector('#four');
+input4.addEventListener('click',getInput4);
+
+const input5=document.querySelector('#five');
+input5.addEventListener('click',getInput5);
+
+const input6=document.querySelector('#six');
+input6.addEventListener('click',getInput6);
+
+const input7=document.querySelector('#seven');
+input7.addEventListener('click',getInput7);
+
+const input8=document.querySelector('#eight');
+input8.addEventListener('click',getInput8);
+
+const input9=document.querySelector('#nine');
+input9.addEventListener('click',getInput9);
+
+const input0=document.querySelector('#zero');
+input0.addEventListener('click',getInput0);
+
+const inputDot=document.querySelector('#deci');
+inputDot.addEventListener('click',getInputDeci);
 
 
 
@@ -228,6 +243,8 @@ function factorialOf(num){
         x--;
         }
         return (num)
+    }else{
+        return 'ERROR!';
     }
 }
 
@@ -239,9 +256,8 @@ function getResult(){
         let operandRaw=operandInput.join('');
         let operand=Math.round(operandRaw*100)/100;
         sum.push(operand);
-        console.log(sum);
         operandInput.length=0;
-        result=sumOfArray(sum);   
+        result=Math.round(sumOfArray(sum)*100)/100;   
         inputOnScreen=result;
         screen.innerHTML=inputOnScreen;
         sum.length=0;
@@ -251,9 +267,8 @@ function getResult(){
         let operandRaw=operandInput.join('');
         let operand=Math.round(operandRaw*100)/100;
         diff.push(operand);
-        console.log(diff);
         operandInput.length=0;
-        result=diffOfArray(diff);   
+        result=Math.round(diffOfArray(diff)*100)/100;   
         inputOnScreen=result;
         screen.innerHTML=inputOnScreen;
         diff.length=0;
@@ -263,7 +278,6 @@ function getResult(){
         let operandRaw=operandInput.join('');
         let operand=Math.round(operandRaw*100)/100;
         mult.push(operand);
-        console.log(mult);
         operandInput.length=0;
         let resultRaw=multOfArray(mult);  
         result=Math.round(resultRaw*100)/100;
@@ -284,10 +298,8 @@ function getResult(){
         let operandRaw=operandInput.join('');
         let operand=Math.round(operandRaw*100)/100;
         div.push(operand);
-        console.log(div);
         operandInput.length=0;
         let resultRaw=divOfArray(div);
-        console.log(resultRaw);
         if (resultRaw==='ERROR!'){
             inputOnScreen=resultRaw;
             screen.innerHTML=inputOnScreen; 
@@ -305,7 +317,6 @@ function getResult(){
         let operandRaw=operandInput.join('');
         let operand=Math.round(operandRaw*100)/100;
         per.push(operand);
-        console.log(per);
         operandInput.length=0;
         let resultRaw=perOfArray(per); 
         result=Math.round(resultRaw*100)/100;
@@ -330,6 +341,159 @@ function getResult(){
 
 }
 
+//Parsing Operations Input Functions
+
+function getInputAdd(){
+    if (operandInput.length!==0||lastOperation!=='+'){
+        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
+            let operandRaw=operandInput.join('');
+            let operand=Math.round(operandRaw*100)/100;
+            sum.push(operand);
+            operandInput=[];
+    
+        }else{
+            let result=getResult();
+            sum.push(result);
+    
+        }
+    }
+    lastOperation='+';
+    
+}
+
+function getInputMult(){
+    if (operandInput.length!==0||lastOperation!=='*'){
+        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
+            let operandRaw=operandInput.join('');
+            let operand=Math.round(operandRaw*100)/100;
+            mult.push(operand);
+            operandInput=[];
+
+        }else{
+            let result=getResult();
+            mult.push(result);
+        }
+    }
+    lastOperation='*';
+
+    
+}
+
+
+function getInputSub(){
+    if (operandInput.length!==0||lastOperation!=='-'){
+        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
+            let operandRaw=operandInput.join('');
+            let operand=Math.round(operandRaw*100)/100;
+            diff.push(operand);
+            operandInput=[];
+
+        }else{
+            let result=getResult();
+            diff.push(result);
+        }
+    }
+    lastOperation='-';
+
+    
+}
+
+function getInputDiv(){
+    if (operandInput.length!==0||lastOperation!=='/'){
+        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
+            let operandRaw=operandInput.join('');
+            let operand=Math.round(operandRaw*100)/100;
+            div.push(operand);
+            operandInput=[];
+
+        }else{
+            let result=getResult();
+            div.push(result);
+        }
+    }
+    lastOperation='/';
+
+    
+}
+
+function getInputPer(){
+    if (operandInput.length!==0||lastOperation!=='%'){
+        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
+            let operandRaw=operandInput.join('');
+            let operand=Math.round(operandRaw*100)/100;
+            per.push(operand);
+            operandInput=[];
+
+        }else{
+            let result=getResult();
+            per.push(result);
+        }
+    }
+    lastOperation='%';
+
+    
+}
+
+function getInputEqual(){
+    getResult()
+    operandInput=`${result}`.split('');
+    
+    lastOperation='='; //this last operation memory is to use 
+    //for deleting input memory in case of an operation ended and 
+    //user doesnt want to continue with the result.
+
+}
+
+function getInputSquareRoot(){
+    let operandRaw=operandInput.join('');
+    let operand=Math.round(operandRaw*100)/100;
+    let resultRaw=squareRootOf(operand);
+    result=Math.round(resultRaw*100)/100;
+    operandInput=result.toString().split('');
+    screen.innerHTML=result;   
+}
+
+function getInputFactorial(){
+    result=factorialOf(parseFloat(operandInput.join('')));
+    if(result.toString().length<15){
+        inputOnScreen=result;
+        screen.innerHTML=inputOnScreen;
+        operandInput=result.toString().split('');
+    }else{
+        result='ERROR!TOO LONG!';
+        inputOnScreen=result;
+        screen.innerHTML=inputOnScreen;
+    }  
+}
+
+function getInputMinus(){
+    let operand=operandInput.join('');
+    result=minusOf(operand);
+    inputOnScreen=result;
+    screen.innerHTML=inputOnScreen;
+    operandInput=result.toString().split('');
+}
+
+function getInputClear(){
+    operandInput.length=0;
+    inputOnScreen='0';
+    screen.innerHTML=inputOnScreen;
+    lastOperation='';
+
+}
+
+function getInputBackspace(){
+    operandInput.pop();
+    inputOnScreen=operandInput.join('');
+    screen.innerHTML=inputOnScreen;
+}
+
+
+
+
+
+
+
 
 //Executing operations
 
@@ -342,174 +506,123 @@ const per=[];
 //if user doubleclicks on same operator more than once, operands becomes zero. so to obey it last operation will be saved in case of repeating.
 let lastOperation='';
 
+
+//Operation Buttons Click Event Listeners
+
 const addOper=document.querySelector('#add');
-addOper.addEventListener('click', ()=>{
-    if (operandInput.length!==0||lastOperation!=='+'){
-        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
-            let operandRaw=operandInput.join('');
-            let operand=Math.round(operandRaw*100)/100;
-            sum.push(operand);
-            console.log(sum);
-            operandInput=[];
-    
-        }else{
-            let result=getResult();
-            sum.push(result);
-            console.log(sum);
-    
-        }
-    }
-    lastOperation='+';
-    console.log(lastOperation);
-    
-});
+addOper.addEventListener('click',getInputAdd);
 
 const multOper=document.querySelector('#mult');
-multOper.addEventListener('click', ()=>{
-    if (operandInput.length!==0||lastOperation!=='*'){
-        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
-            let operandRaw=operandInput.join('');
-            let operand=Math.round(operandRaw*100)/100;
-            mult.push(operand);
-            console.log(mult);
-            operandInput=[];
-
-        }else{
-            let result=getResult();
-            mult.push(result);
-            console.log(mult);
-        }
-    }
-    lastOperation='*';
-    console.log(lastOperation);
-
-    
-});
+multOper.addEventListener('click',getInputMult);
 
 const subOper=document.querySelector('#sub');
-subOper.addEventListener('click', ()=>{
-    if (operandInput.length!==0||lastOperation!=='-'){
-        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
-            let operandRaw=operandInput.join('');
-            let operand=Math.round(operandRaw*100)/100;
-            diff.push(operand);
-            console.log(diff);
-            operandInput=[];
-
-        }else{
-            let result=getResult();
-            diff.push(result);
-            console.log(diff);
-        }
-    }
-    lastOperation='-';
-    console.log(lastOperation);
-
-    
-});
+subOper.addEventListener('click',getInputSub);
 
 const divOper=document.querySelector('#div');
-divOper.addEventListener('click', ()=>{
-    if (operandInput.length!==0||lastOperation!=='/'){
-        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
-            let operandRaw=operandInput.join('');
-            let operand=Math.round(operandRaw*100)/100;
-            div.push(operand);
-            console.log(div);
-            operandInput=[];
-
-        }else{
-            let result=getResult();
-            div.push(result);
-            console.log(div);
-        }
-    }
-    lastOperation='/';
-    console.log(lastOperation);
-
-    
-});
+divOper.addEventListener('click',getInputDiv);
 
 
 const perOper=document.querySelector('#percentage');
-perOper.addEventListener('click', ()=>{
-    if (operandInput.length!==0||lastOperation!=='%'){
-        if (sum.length===0&&diff.length===0&&mult.length===0&&div.length===0&&per.length===0){
-            let operandRaw=operandInput.join('');
-            let operand=Math.round(operandRaw*100)/100;
-            per.push(operand);
-            console.log(per);
-            operandInput=[];
-
-        }else{
-            let result=getResult();
-            per.push(result);
-            console.log(per);
-        }
-    }
-    lastOperation='%';
-    console.log(lastOperation);
-
-    
-});
+perOper.addEventListener('click',getInputPer);
 
 
 const equalOper=document.querySelector('#equal');
-equalOper.addEventListener('click', ()=>{
-    getResult()
-    operandInput=`${result}`.split('');
-    
-    console.log(result);
-    lastOperation='='; //this last operation memory is to use 
-    //for deleting input memory in case of an operation ended and 
-    //user doesnt want to continue with the result.
-
-});
+equalOper.addEventListener('click',getInputEqual);
 
 const squareRootOper=document.querySelector('#squareroot');
-squareRootOper.addEventListener('click',()=>{
-    let operandRaw=operandInput.join('');
-    let operand=Math.round(operandRaw*100)/100;
-    let resultRaw=squareRootOf(operand);
-    result=Math.round(resultRaw*100)/100;
-    operandInput=result.toString().split('');
-    screen.innerHTML=result;   
-});
+squareRootOper.addEventListener('click',getInputSquareRoot);
 
 
 const factorialOper=document.querySelector('#factorial');
-factorialOper.addEventListener('click',()=>{
-    result=factorialOf(parseFloat(operandInput.join('')));
-    if(result.toString().length<15){
-        inputOnScreen=result;
-        screen.innerHTML=inputOnScreen;
-        operandInput=result.toString().split('');
-    }else{
-        result='ERROR!TOO LONG!';
-        inputOnScreen=result;
-        screen.innerHTML=inputOnScreen;
-    }  
-});
+factorialOper.addEventListener('click',getInputFactorial);
 
 
 const minusOper=document.querySelector('#minus');
-minusOper.addEventListener('click', ()=>{
-    let operand=operandInput.join('');
-    result=minusOf(operand);
-    inputOnScreen=result;
-    screen.innerHTML=inputOnScreen;
-    operandInput=result.toString().split('');
-});
+minusOper.addEventListener('click',getInputMinus);
 
 
 const clearOper=document.querySelector('#clear');
-clearOper.addEventListener('click',()=>{
-    operandInput=[];
-    inputOnScreen='0';
-    screen.innerHTML=inputOnScreen;
-    lastOperation='';
+clearOper.addEventListener('click',getInputClear);
 
+
+const backspace=document.querySelector('#backspace');
+backspace.addEventListener('click',getInputBackspace);
+
+
+
+///Keyboard support.
+
+const inputKey1=document.querySelector('html');
+inputKey1.addEventListener('keydown', (e)=>{
+    switch(e.key){
+        case '1':
+            getInput1();   
+            break;
+        case '2':
+            getInput2();
+            break;
+        case '3':
+            getInput3();
+            break;
+        case '4':
+            getInput4();
+            break;
+        case '5':
+            getInput5();
+            break;
+        case '6':
+            getInput6();
+            break;
+        case '7':
+            getInput7();
+            break;
+        case '8':
+            getInput8();
+            break;
+        case '9':
+            getInput9();
+            break;
+        case '0':
+            getInput0();
+            break;
+        case '.':
+            getInputDeci();
+            break;
+        case 'Escape':
+            getInputClear();
+            break;
+        case '+':
+            getInputAdd();
+            break;
+        case '-':
+            getInputSub();
+            break;
+        case '*':
+            getInputMult();
+            break;
+        case '/':
+            getInputDiv();
+            break;
+        case '%':
+            getInputPer();
+            break;
+        case '!':
+            getInputFactorial();
+            break;
+        case 'm':
+            getInputMinus();
+            break;
+        case '√':
+            getInputSquareRoot();
+            break;
+        case 'Backspace':
+            getInputBackspace();
+            break;
+        case 'Enter':
+            getInputEqual();
+            break;
+
+    }       
 });
-
 
 
