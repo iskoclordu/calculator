@@ -11,11 +11,13 @@ screen.innerHTML=inputOnScreen;
 
 
 function getInput1(){
-    if (lastOperation==='='){
+    if (lastOperation==='='){   //if last operation is equal than user have two options. 
+        //One to continue with result or start a new operation with a new operand. This condition to ensure that.
         operandInput.length=0;
         lastOperation=''; //unless lastOperation changes,it will continue to empty the input.   
     }
-    if(operandInput.length<10) {
+    if(operandInput.length<10) { //this is to limit the digits of operand. 
+        //limit is set to 10, that is enough for a basic calculator.
         operandInput.push('1');
         inputOnScreen=operandInput.join('');
         screen.innerHTML=inputOnScreen;
@@ -250,8 +252,13 @@ function factorialOf(num){
 
 let result ='';
 function getResult(){
-    
+    //This function is to use to get result. 
+    //Either when clicked on an operator or directly on "Equal" button.
     if (sum.length===1) {
+
+        //This calculator works with two operands only. After defining first operand,
+        //The first number will move to array of the choosen operator and wait there for second operand.
+        //As soon as the second operand defined and clicked on an operation button, the result will be get.
 
         let operandRaw=operandInput.join('');
         let operand=Math.round(operandRaw*100)/100;
